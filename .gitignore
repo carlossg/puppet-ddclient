@@ -1,0 +1,6 @@
+.librarian/
+.tmp/
+pkg/
+doc/
+spec/fixtures/
+.vagrant/
