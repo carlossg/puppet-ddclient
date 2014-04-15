@@ -16,6 +16,7 @@ class ddclient(
 
   case $operatingsystem {
     'RedHat', 'CentOS':  {
+      $config_file = "/etc/ddclient.conf"
       file { '/etc/sysconfig/ddclient':
         mode    => '0600',
         content => template('ddclient/ddclient-redhat.erb'),
@@ -24,6 +25,7 @@ class ddclient(
       }
     }
     'Debian', 'Ubuntu' : {
+      $config_file="/etc/ddclient.conf"
       file { '/etc/default/ddclient':
         mode    => '0600',
         content => template('ddclient/ddclient-debian.erb'),
@@ -31,10 +33,13 @@ class ddclient(
         notify  => Service['ddclient'],
       }
     }
+    'FreeBSD': {
+      $config_file = "/usr/local/etc/ddclient.conf"
+    }
     default: { }
   }
 
-  file { '/etc/ddclient.conf':
+  file { $config_file:
     mode    => '0600',
     content => template('ddclient/ddclient.conf.erb'),
   } ~>
