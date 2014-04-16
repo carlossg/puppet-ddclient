@@ -5,9 +5,11 @@ class ddclient(
   $host,
   $ssl = "yes",
   $daemon = 300,
-  $server = "www.dnsdynamic.org",
+  $server = undef,
   $protocol = "dyndns2",
-  $use = "web, web=myip.dnsdynamic.com",
+  $use = undef,
+  $syslog = undef,
+  $pid = undef,
   ) {
 
   package { 'ddclient':
@@ -25,7 +27,7 @@ class ddclient(
       }
     }
     'Debian', 'Ubuntu' : {
-      $config_file="/etc/ddclient.conf"
+      $config_file = "/etc/ddclient.conf"
       file { '/etc/default/ddclient':
         mode    => '0600',
         content => template('ddclient/ddclient-debian.erb'),
