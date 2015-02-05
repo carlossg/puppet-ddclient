@@ -1,0 +1,14 @@
+{
+  "author": "csanchez",
+  "dependencies": [],
+  "description": "A Puppet module to install and configure DDclient",
+  "license": "Apache License, Version 2.0",
+  "name": "csanchez-ddclient",
+  "operatingsystem_support": [],
+  "project_page": "http://github.com/carlossg/puppet-ddclient",
+  "requirements": [],
+  "source": "http://github.com/carlossg/puppet-ddclient",
+  "summary": "DDclient module for Puppet",
+  "tags": [],
+  "version": "1.0.1"
+}

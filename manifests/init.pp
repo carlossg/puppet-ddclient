@@ -8,6 +8,7 @@ class ddclient(
   $server = "www.dnsdynamic.org",
   $protocol = "dyndns2",
   $use = "web, web=myip.dnsdynamic.com",
+  $conf_path = "/etc/ddclient.conf"
   ) {
 
   package { 'ddclient':
@@ -34,7 +35,8 @@ class ddclient(
     default: { }
   }
 
-  file { '/etc/ddclient.conf':
+  file { 'ddclient.conf':
+    path    => $conf_path,
     mode    => '0600',
     content => template('ddclient/ddclient.conf.erb'),
   } ~>
